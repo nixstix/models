@@ -1,0 +1,223 @@
+
+Attaching package: ‘MOFA2’
+
+The following object is masked from ‘package:stats’:
+
+    predict
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::between()     masks data.table::between()
+✖ dplyr::filter()      masks stats::filter()
+✖ dplyr::first()       masks data.table::first()
+✖ lubridate::hour()    masks data.table::hour()
+✖ lubridate::isoweek() masks data.table::isoweek()
+✖ dplyr::lag()         masks stats::lag()
+✖ dplyr::last()        masks data.table::last()
+✖ lubridate::mday()    masks data.table::mday()
+✖ lubridate::minute()  masks data.table::minute()
+✖ lubridate::month()   masks data.table::month()
+✖ lubridate::quarter() masks data.table::quarter()
+✖ lubridate::second()  masks data.table::second()
+✖ purrr::transpose()   masks data.table::transpose()
+✖ lubridate::wday()    masks data.table::wday()
+✖ lubridate::week()    masks data.table::week()
+✖ lubridate::yday()    masks data.table::yday()
+✖ lubridate::year()    masks data.table::year()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘reshape2’
+
+The following object is masked from ‘package:tidyr’:
+
+    smiths
+
+The following objects are masked from ‘package:data.table’:
+
+    dcast, melt
+
+Loading required package: Biobase
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following object is masked from ‘package:S4Vectors’:
+
+    expand
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Warning message:
+In .quality_control(object, verbose = verbose) :
+  Factor(s) 1 are strongly correlated with the total number of expressed features for at least one of your omics. Such factors appear when there are differences in the total 'levels' between your samples, *sometimes* because of poor normalisation in the preprocessing steps.
+
+Trained MOFA with the following characteristics: 
+ Number of views: 6 
+ Views names: geneExp ab cytokineL cell_freq tcellPol tcellAct 
+ Number of features (per view): 21 31 14 39 1 2 
+ Number of groups: 1 
+ Groups names: group1 
+ Number of samples (per group): 192 
+ Number of factors: 15 
+
+    Meta.specimen_id       Factor1      Factor2      Factor3     Factor4
+1                  1  0.0002127474 -0.094083257 -0.367006242 -0.46678576
+102              102 -0.0002949947 -0.106405042 -0.186449364 -0.79142296
+103              103  0.0008075970 -0.388450265 -0.771117806  0.98010361
+109              109  0.0002090784  0.000387069  0.002032272  0.05115074
+11                11  0.0000000000  0.000000000  0.000000000  0.00000000
+[1]  96 187
+   Day0.Meta.specimen_id  Day0.Factor1 Day0.Factor2 Day0.Factor3 Day0.Factor4
+1                      1  0.0002127474 -0.094083257 -0.367006242  -0.46678576
+13                   102 -0.0002949947 -0.106405042 -0.186449364  -0.79142296
+14                   109  0.0002090784  0.000387069  0.002032272   0.05115074
+2                     11  0.0000000000  0.000000000  0.000000000   0.00000000
+15                   114 -0.0004403754  0.361426115 -1.296460390   0.32867709
+ [1]           NA           NA           NA           NA           NA
+ [6]           NA           NA           NA           NA           NA
+[11]           NA           NA           NA           NA           NA
+[16]           NA           NA           NA           NA           NA
+[21]           NA           NA           NA           NA           NA
+[26]           NA           NA           NA           NA           NA
+[31]           NA           NA           NA           NA           NA
+[36]           NA           NA           NA           NA           NA
+[41]           NA           NA           NA           NA           NA
+[46]           NA           NA           NA           NA           NA
+[51]           NA           NA           NA           NA 1.380374e+01
+[56] 3.282289e-01           NA           NA           NA 1.672238e+01
+[61] 9.410546e-02 6.276439e-01 3.478434e+01 6.742093e-01 2.577998e+01
+[66]           NA 1.535974e+00 1.845246e+00 1.297871e+01           NA
+[71]           NA 5.528656e-01 8.237389e-01 7.664282e-01 3.275554e-04
+[76] 4.552722e-01           NA 1.082307e+00           NA 5.476721e-01
+[81]           NA 2.813304e-01           NA           NA 3.424328e+00
+[86] 6.224693e+00 1.077862e+01 6.181074e-01           NA 1.224738e+00
+[91] 1.530700e+00 2.333151e+01 6.269046e-02           NA           NA
+[96]           NA

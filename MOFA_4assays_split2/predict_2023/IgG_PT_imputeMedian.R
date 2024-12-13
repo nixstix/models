@@ -1,0 +1,41 @@
+# predict
+
+source('../scripts/libs.R')
+
+load('../data/predictions/challenge.RData')
+load('../data/regression_models/regression_models_IgG_PT_1.RData')
+
+# which model:
+models[[1]]$model_cor
+mod = models[[1]]$model
+
+predictors = rownames(coef(mod))
+predictors = predictors[!predictors %in% '(Intercept)']
+predictors
+
+new_data = challenge_data.baseline[, c(predictors)]
+dim(new_data)
+summary(new_data)
+
+new_data_i = data.frame(apply(new_data, 2, function(x){
+  m = median(x, na.rm = T)
+  x[is.na(x)] = m
+  return(x)
+})
+)
+
+new_data = na.omit(new_data_i)
+dim(new_data_i)
+
+preds = data.frame(predict(mod, newx=as.matrix(new_data_i), s='lambda.min'))
+
+preds$rnk = rank(preds$lambda.min)
+preds$subject_id = rownames(preds)
+preds
+
+all_subj = data.frame(subject_id=as.character(challenge_data.baseline$Day0.Meta.subject_id))
+
+res = left_join(all_subj, preds)
+res
+
+write_tsv(x = res, file='../data/predictions/IgG_PT_impute.tsv', col_names = T)

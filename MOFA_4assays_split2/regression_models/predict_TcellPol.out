@@ -1,0 +1,252 @@
+
+Attaching package: ‘MOFA2’
+
+The following object is masked from ‘package:stats’:
+
+    predict
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::between()     masks data.table::between()
+✖ dplyr::filter()      masks stats::filter()
+✖ dplyr::first()       masks data.table::first()
+✖ lubridate::hour()    masks data.table::hour()
+✖ lubridate::isoweek() masks data.table::isoweek()
+✖ dplyr::lag()         masks stats::lag()
+✖ dplyr::last()        masks data.table::last()
+✖ lubridate::mday()    masks data.table::mday()
+✖ lubridate::minute()  masks data.table::minute()
+✖ lubridate::month()   masks data.table::month()
+✖ lubridate::quarter() masks data.table::quarter()
+✖ lubridate::second()  masks data.table::second()
+✖ purrr::transpose()   masks data.table::transpose()
+✖ lubridate::wday()    masks data.table::wday()
+✖ lubridate::week()    masks data.table::week()
+✖ lubridate::yday()    masks data.table::yday()
+✖ lubridate::year()    masks data.table::year()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘reshape2’
+
+The following object is masked from ‘package:tidyr’:
+
+    smiths
+
+The following objects are masked from ‘package:data.table’:
+
+    dcast, melt
+
+Loading required package: Biobase
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following object is masked from ‘package:S4Vectors’:
+
+    expand
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Warning message:
+Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+      (Intercept)     Day0.Meta.age Day0.TcellPol.pol 
+       -3.5627618         0.2481769         1.8078028 
+
+	Spearman's rank correlation rho
+
+data:  preds$rnk and preds$actual
+S = 4582, p-value = 0.04035
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.3986569 
+
+Warning message:
+Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+
+	Spearman's rank correlation rho
+
+data:  preds$rnk and preds$actual
+S = 2028, p-value = 0.9946
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+         rho 
+-0.001976285 
+
+ Day0.Factor6 Day0.Factor12 Day0.Factor14 Day0.Factor15 Day0.Factor10 
+  -14.7767814   -12.7687459   -11.3519313    -6.5360014    -2.8513326 
+Day0.Factor13  Day0.Factor4  Day0.Factor8  Day0.Factor2  Day0.Factor1 
+   -1.5692448    -1.5106360    -1.2895527    -0.9874578     0.8026979 
+ Day0.Factor5 Day0.Factor11  Day0.Factor3  Day0.Factor9   (Intercept) 
+    4.9925437     6.8154963    11.8751061    11.9974626    12.3639026 
+Warning message:
+Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+
+	Spearman's rank correlation rho
+
+data:  preds$rnk and preds$actual
+S = 1662, p-value = 0.4124
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.1788538 
+
+     Day0.Factor8      Day0.Factor1     Day0.Factor10      Day0.Factor5 
+      -0.50889511       -0.46380139       -0.44069968       -0.02851312 
+     Day0.Factor7      Day0.Factor3 Day0.TcellPol.pol      Day0.Factor2 
+       0.54449359        0.56445649        1.67360970        1.94101089 
+      (Intercept) 
+       5.08341195 
+ Day0.Factor2  Day0.Factor3  Day0.Factor7  Day0.Factor8  Day0.Factor1 
+   1.94101089    0.56445649    0.54449359   -0.50889511   -0.46380139 
+Day0.Factor10  Day0.Factor5 
+  -0.44069968   -0.02851312 
+Warning messages:
+1: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+2: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+3: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+4: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+5: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+6: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+7: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+Warning messages:
+1: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+2: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+3: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+4: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+5: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+6: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+7: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+8: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+9: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+10: Option grouped=FALSE enforced in cv.glmnet, since < 3 observations per fold 
+[1]  0.04644269  0.08399209 -0.01284585  0.09288538  0.17885375  0.19565217
+[7]  0.19565217

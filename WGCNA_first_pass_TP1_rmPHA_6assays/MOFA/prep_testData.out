@@ -1,0 +1,254 @@
+
+Attaching package: ‘MOFA2’
+
+The following object is masked from ‘package:stats’:
+
+    predict
+
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::between()     masks data.table::between()
+✖ dplyr::filter()      masks stats::filter()
+✖ dplyr::first()       masks data.table::first()
+✖ lubridate::hour()    masks data.table::hour()
+✖ lubridate::isoweek() masks data.table::isoweek()
+✖ dplyr::lag()         masks stats::lag()
+✖ dplyr::last()        masks data.table::last()
+✖ lubridate::mday()    masks data.table::mday()
+✖ lubridate::minute()  masks data.table::minute()
+✖ lubridate::month()   masks data.table::month()
+✖ lubridate::quarter() masks data.table::quarter()
+✖ lubridate::second()  masks data.table::second()
+✖ purrr::transpose()   masks data.table::transpose()
+✖ lubridate::wday()    masks data.table::wday()
+✖ lubridate::week()    masks data.table::week()
+✖ lubridate::yday()    masks data.table::yday()
+✖ lubridate::year()    masks data.table::year()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘reshape2’
+
+The following object is masked from ‘package:tidyr’:
+
+    smiths
+
+The following objects are masked from ‘package:data.table’:
+
+    dcast, melt
+
+Loading required package: Biobase
+Loading required package: BiocGenerics
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:lubridate’:
+
+    intersect, setdiff, union
+
+The following objects are masked from ‘package:dplyr’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min
+
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:lubridate’:
+
+    second, second<-
+
+The following objects are masked from ‘package:dplyr’:
+
+    first, rename
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+The following objects are masked from ‘package:data.table’:
+
+    first, second
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:lubridate’:
+
+    %within%
+
+The following objects are masked from ‘package:dplyr’:
+
+    collapse, desc, slice
+
+The following object is masked from ‘package:purrr’:
+
+    reduce
+
+The following object is masked from ‘package:data.table’:
+
+    shift
+
+Loading required package: GenomicRanges
+Loading required package: GenomeInfoDb
+Loading required package: SummarizedExperiment
+Loading required package: MatrixGenerics
+Loading required package: matrixStats
+
+Attaching package: ‘matrixStats’
+
+The following objects are masked from ‘package:Biobase’:
+
+    anyMissing, rowMedians
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+Attaching package: ‘MatrixGenerics’
+
+The following objects are masked from ‘package:matrixStats’:
+
+    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+    colWeightedMeans, colWeightedMedians, colWeightedSds,
+    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+    rowWeightedSds, rowWeightedVars
+
+The following object is masked from ‘package:Biobase’:
+
+    rowMedians
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following object is masked from ‘package:S4Vectors’:
+
+    expand
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Warning message:
+In .quality_control(object, verbose = verbose) :
+  Factor(s) 1 are strongly correlated with the total number of expressed features for at least one of your omics. Such factors appear when there are differences in the total 'levels' between your samples, *sometimes* because of poor normalisation in the preprocessing steps.
+
+Trained MOFA with the following characteristics: 
+ Number of views: 6 
+ Views names: geneExp ab cytokineL cell_freq tcellPol tcellAct 
+ Number of features (per view): 21 31 14 39 1 2 
+ Number of groups: 1 
+ Groups names: group1 
+ Number of samples (per group): 192 
+ Number of factors: 15 
+
+     Factor1     Factor2     Factor3     Factor4      Factor5
+730 6.858100  0.03583883 -0.13669019  0.01651464 -0.021300041
+731       NA          NA          NA          NA           NA
+732 5.303986  0.03255069 -0.06640038  0.04642752 -0.018580991
+733       NA          NA          NA          NA           NA
+734       NA          NA          NA          NA           NA
+735       NA          NA          NA          NA           NA
+736       NA          NA          NA          NA           NA
+737       NA          NA          NA          NA           NA
+740 6.944125 -0.01733699 -0.11534352  0.01645743  0.004486571
+741       NA          NA          NA          NA           NA
+742 8.641496 -0.02924250 -0.02426059 -0.01306600  0.017268501
+743       NA          NA          NA          NA           NA
+744       NA          NA          NA          NA           NA
+745       NA          NA          NA          NA           NA
+746       NA          NA          NA          NA           NA
+747       NA          NA          NA          NA           NA
+750 7.936967 -0.01568883 -0.04161595 -0.04295728 -0.026350955
+751       NA          NA          NA          NA           NA
+752       NA          NA          NA          NA           NA
+753       NA          NA          NA          NA           NA
+754       NA          NA          NA          NA           NA
+755       NA          NA          NA          NA           NA
+756       NA          NA          NA          NA           NA
+757       NA          NA          NA          NA           NA
+760 2.950962  0.01906482 -0.06514782  0.01877691 -0.005191993
+761       NA          NA          NA          NA           NA
+762 1.260296 -0.01115750 -0.10109103  0.01600668 -0.016273217
+763       NA          NA          NA          NA           NA
+764       NA          NA          NA          NA           NA
+765       NA          NA          NA          NA           NA
+    Day0.Factor1  Day0.Factor2 Day0.Factor3 Day0.Factor4 Day0.Factor5
+97      5.303986  0.0325506924 -0.066400379   0.04642752 -0.018580991
+98      8.641496 -0.0292424971 -0.024260592  -0.01306600  0.017268501
+99            NA            NA           NA           NA           NA
+100     1.260296 -0.0111575022 -0.101091034   0.01600668 -0.016273217
+101           NA            NA           NA           NA           NA
+102    10.136761  0.0297487321 -0.131441283   0.09008598 -0.022278194
+103     6.227025  0.0103943567 -0.373371310   0.34126333 -0.002612727
+104           NA            NA           NA           NA           NA
+105     7.070143  0.0004094712 -0.003370499  -0.01031050  0.008218447
+106           NA            NA           NA           NA           NA
+107     3.276567 -0.0719072234 -0.084298360   0.01079720  0.017218627
+108           NA            NA           NA           NA           NA
+109     5.090172  0.0172590711 -0.149741652   0.06550799 -0.007421272
+110     4.021847 -0.0200399807  0.011552589   0.04473905  0.005755004
+111     4.978726  0.0078096627  0.004201601   0.03687861 -0.015136975
+112    24.259126  0.0306088913  0.016027186  -0.01632365  0.002435740
+114     5.921114  0.0269996712 -0.012522143   0.02809764 -0.026953328
+115     4.276748 -0.0101514579 -0.146260480  -0.04771506 -0.001357647
+116           NA            NA           NA           NA           NA
+117           NA            NA           NA           NA           NA
+118    31.619335 -0.0012995807 -0.094970513   0.03659802 -0.012292254
+ [1]  4.00346280 23.20303294          NA  0.50994144  0.83994325  0.04499616
+ [7]  0.08999231  1.87484135  0.41996263  7.05799373  1.72485116  2.12854872
+[13]  3.76266197  2.20931657  6.11947726  6.67442835  3.40471066 33.82211234
+[19]  4.82100297          NA  0.37496647
+[1]  21 181
+    Day0.Factor1 Day0.Factor2 Day0.Factor3 Day0.Factor4 Day0.Factor5
+97      5.303986   0.03255069  -0.06640038   0.04642752  -0.01858099
+98      8.641496  -0.02924250  -0.02426059  -0.01306600   0.01726850
+99            NA           NA           NA           NA           NA
+100     1.260296  -0.01115750  -0.10109103   0.01600668  -0.01627322
+101           NA           NA           NA           NA           NA

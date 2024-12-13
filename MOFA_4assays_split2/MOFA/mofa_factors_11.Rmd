@@ -1,0 +1,398 @@
+---
+title: "MOFA factors"
+
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
+output:
+  BiocStyle::html_document:
+    toc: true
+    toc_float:
+        collapsed: true
+        smooth_scroll: true
+    toc_depth: 3
+    fig_caption: yes
+    code_folding: show
+    number_sections: false
+
+
+---
+
+## load data, libraries, functions
+
+```{r}
+library(tidyverse)
+library(MOFA2)
+library(ggplot2)
+library(MOFAdata)
+
+## models
+
+load('../data/regression_models/regression_models_IgG_PT_1.RData')
+models[[1]]$model_coef
+
+```
+
+## Day0 T cell pol
+## Age
+
+
+## Factor 11
+
+```{r}
+MOFAobject = load_model('../data/MOFA_models/MOFA2_noScale_train2020_21.hdf5')
+MOFAobject
+
+plot_variance_explained(MOFAobject, x="view", y="factor")
+
+plot_factor(MOFAobject, 
+            factor = 11,
+            color_by = "IgG_PT"
+)
+
+plot_weights(MOFAobject,
+             #view = "geneExp",
+             factor = 11,
+             nfeatures = 20,     # Number of features to highlight
+             scale = T,          # Scale weights from -1 to 1
+             abs = F             # Take the absolute value?
+)
+
+plot_weights(MOFAobject,
+             view = "geneExp",
+             factor = 11,
+             nfeatures = 10,     # Number of features to highlight
+             scale = T,          # Scale weights from -1 to 1
+             abs = F             # Take the absolute value?
+)
+
+plot_weights(MOFAobject,
+             view = "cell_freq",
+             factor = 11,
+             nfeatures = 10,     # Number of features to highlight
+             scale = T,          # Scale weights from -1 to 1
+             abs = F             # Take the absolute value?
+)
+
+plot_weights(MOFAobject,
+             view = "ab",
+             factor = 11,
+             nfeatures = 10,     # Number of features to highlight
+             scale = T,          # Scale weights from -1 to 1
+             abs = F             # Take the absolute value?
+)
+
+plot_weights(MOFAobject,
+             view = "cytokineL",
+             factor = 11,
+             nfeatures = 10,     # Number of features to highlight
+             scale = T,          # Scale weights from -1 to 1
+             abs = F             # Take the absolute value?
+)
+
+
+plot_top_weights(MOFAobject,
+                 #view = "geneExp",
+                 factor = 11,
+                 nfeatures = 40
+)
+
+plot_top_weights(MOFAobject,
+                 view = "cell_freq",
+                 factor = 11,
+                 nfeatures = 40
+)
+
+
+plot_data_heatmap(MOFAobject,
+                  view = "geneExp",         # view of interest
+                  factor = 11,             # factor of interest
+                  features = 60,          # number of features to plot (they are selected by weight)
+                  
+                  # extra arguments that are passed to the `pheatmap` function
+                  cluster_rows = TRUE, cluster_cols = FALSE,
+                  show_rownames = TRUE, show_colnames = FALSE
+)
+
+
+plot_data_scatter(MOFAobject,
+                  view = "geneExp",         # view of interest
+                  factor = 11,             # factor of interest
+                  features = 11,           # number of features to plot (they are selected by weight)
+                  add_lm = TRUE,         # add linear regression
+                  color_by = "Meta.infancy_vac"
+)
+
+plot_data_scatter(MOFAobject,
+                  view = "cytokineL",         # view of interest
+                  factor = 11,             # factor of interest
+                  features = 11,           # number of features to plot (they are selected by weight)
+                  add_lm = TRUE,         # add linear regression
+                  color_by = "Meta.infancy_vac"
+)
+
+```
+
+```{r}
+factors <- get_factors(MOFAobject, factors = "all")
+lapply(factors,dim)
+
+weights <- get_weights(MOFAobject, views = "all", factors = "Factor11")
+a= weights$geneExp
+ggplot(a, aes(x=Factor11)) +
+    geom_density() 
+
+a['Expr.ENSG00000277632.1', ]
+
+```
+
+```{r}
+a = a[order(a[,1]), ]
+head(a)
+tail(a)
+
+tail(names(a), n=200)
+
+```
+
+```{r}
+b= weights$ab
+ggplot(b, aes(x=Factor11)) +
+    geom_density() 
+
+
+c= weights$cytokineL
+ggplot(c, aes(x=Factor11)) +
+    geom_density() 
+
+
+d= weights$cell_freq
+ggplot(d, aes(x=Factor11)) +
+    geom_density() 
+
+```
+
+## enrichment 
+
+### against Hallmark
+
+```{r}
+
+MOFAobject3 = MOFAobject
+ens_map = read_tsv('~/Documents/Projects/CMI-PB2/CMI-PB-Oct2023-FINAL/data/raw_prediction_dataset/gene_90_38_export.tsv')
+head(ens_map)
+
+genes = as.character(rownames(MOFAobject3@data$geneExp$group1))
+genes = gsub('Expr.', '', genes)
+table(genes %in% ens_map$versioned_ensembl_gene_id)
+ens_map = ens_map[!duplicated(ens_map$versioned_ensembl_gene_id), ]
+rownames(ens_map) = ens_map$versioned_ensembl_gene_id
+genes_sym = ens_map[genes, 'display_label']$display_label
+
+rownames(MOFAobject3@data$geneExp$group1) = genes_sym
+names(MOFAobject3@intercepts$geneExp$group1) = genes_sym
+
+MOFAobject3@features_metadata$feature[1:6650] = genes_sym
+
+rownames(MOFAobject3@expectations$W$geneExp) = genes_sym
+
+```
+
+```{r}
+hallmark = fgsea::gmtPathways('~/Documents/References/Genesets/MSigDB/h.all.v2023.2.Hs.symbols.gmt.txt')
+
+
+# Get all unique genes
+all_genes <- sort(unique(unlist(hallmark)))
+
+# Create the binary matrix
+binary_matrix <- sapply(all_genes, function(g) {
+    as.numeric(sapply(hallmark, function(x) g %in% x))
+})
+
+# Transpose and convert to a data frame for better visualization
+#binary_matrix <- as.data.frame(t(binary_matrix))
+binary_matrix[1:5, 1:5]
+
+
+# Add row names
+rownames(binary_matrix) <- names(hallmark)
+
+# Display the binary matrix
+binary_matrix[1:5, 1:10]
+dim(binary_matrix)
+
+enrichment3.parametric.pos <- run_enrichment(MOFAobject3,
+                                            view = "geneExp", factors = 11,
+                                            feature.sets = as.matrix(binary_matrix),
+                                            sign = "positive",
+                                            statistical.test = "parametric"
+)
+
+plot_enrichment(enrichment3.parametric.pos, 
+                factor = 'Factor11', 
+                max.pathways = 15
+)
+
+
+plot_enrichment_detailed(enrichment3.parametric.pos, 
+                         factor = 'Factor11', 
+                         max.genes = 8, 
+                         max.pathways = 5
+)
+
+
+enrichment3.parametric.neg <- run_enrichment(MOFAobject3,
+                                             view = "geneExp", factors = 11,
+                                             feature.sets = as.matrix(binary_matrix),
+                                             sign = "negative",
+                                             statistical.test = "parametric"
+)
+
+```
+
+### against BTM
+
+```{r}
+
+btm = fgsea::gmtPathways('~/Documents/References/Genesets/BTM/BTM_for_GSEA_20131008.gmt')
+lapply(btm, length)
+
+# Get all unique genes
+all_genes <- sort(unique(unlist(btm)))
+
+# Create the binary matrix
+binary_matrix_btm <- sapply(all_genes, function(g) {
+    as.numeric(sapply(btm, function(x) g %in% x))
+})
+
+# Transpose and convert to a data frame for better visualization
+#binary_matrix_btm <- as.data.frame(t(binary_matrix_btm))
+binary_matrix_btm[1:5, 1:5]
+
+
+# Add row names
+rownames(binary_matrix_btm) <- names(btm)
+
+# Display the binary matrix
+binary_matrix_btm[1:5, 1:10]
+dim(binary_matrix)
+
+```
+
+```{r}
+enrichment4.parametric.pos <- run_enrichment(MOFAobject3,
+                                             view = "geneExp", factors = 11,
+                                             feature.sets = as.matrix(binary_matrix_btm),
+                                             sign = "positive",
+                                             statistical.test = "parametric"
+)
+
+plot_enrichment(enrichment4.parametric.pos, 
+                factor = 'Factor11', 
+                max.pathways = 15
+)
+
+
+plot_enrichment_detailed(enrichment4.parametric.pos, 
+                         factor = 'Factor11', 
+                         max.genes = 8, 
+                         max.pathways = 5
+)
+
+
+enrichment4.parametric.neg <- run_enrichment(MOFAobject3,
+                                             view = "geneExp", factors = 11,
+                                             feature.sets = as.matrix(binary_matrix_btm),
+                                             sign = "negative",
+                                             statistical.test = "parametric"
+)
+
+plot_enrichment(enrichment4.parametric.neg, 
+                factor = 'Factor11', 
+                max.pathways = 15
+)
+
+
+plot_enrichment_detailed(enrichment4.parametric.neg, 
+                         factor = 'Factor11', 
+                         max.genes = 8, 
+                         max.pathways = 5
+)
+
+```
+
+### other modules
+
+```{r}
+enrichment.parametric <- run_enrichment(MOFAobject3,
+                                             view = "geneExp", factors = c(1:15),
+                                             feature.sets = as.matrix(binary_matrix_btm),
+                                             sign = "positive",
+                                             statistical.test = "parametric"
+)
+```
+
+
+
+```{r}
+weights <- get_weights(MOFAobject3, views = "all", factors = "Factor11", scale = F)
+weights.scale  <- get_weights(MOFAobject3, views = "geneExp", factors = "Factor11", scale = T)
+
+a= weights$ab
+ggplot(a, aes(x=Factor11)) +
+    geom_density() 
+
+a['IgG_PT', ]
+
+#weights.scale$geneExp[c('CCL3', 'CXCL8', 'IL1B', 'CCL4'), ]
+```
+
+```{r}
+a = a[order(a[,1]), ]
+head(a)
+tail(a)
+
+d = as.data.frame(tail(names(a), n=200))
+#write_tsv(d, file='data/CCL3_MOFA_F3.tsv', col_names = T)
+d
+```
+
+### cytokineLs
+
+```{r}
+
+plot_top_weights(MOFAobject3,
+                 view = "cytokineL",
+                 factor = 11,
+                 nfeatures = 5
+)
+
+```
+
+```{r}
+
+plot_top_weights(MOFAobject3,
+                 view = "cell_freq",
+                 factor = 11,
+                 nfeatures = 5
+)
+
+```
+
+```{r}
+plot_data_scatter(MOFAobject,
+                  view = "ab",         # view of interest
+                  factor = 11,             # factor of interest
+                  features = 11,           # number of features to plot (they are selected by weight)
+                  add_lm = TRUE,         # add linear regression
+                  color_by = "Meta.infancy_vac"
+)
+```
+
+## end
+
+```{r}
+Sys.Date()
+getwd()
+
+sessionInfo()
+```
